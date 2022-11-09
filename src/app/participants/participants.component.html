@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let participant of participants">
+      <div class="card mt-3">
+        <h1>{{participant.firstName}} {{participant.lastName}}</h1>
+        <p *ngIf="participant.team; else elseBlock">{{participant.team.name}}</p>
+        <ng-template #elseBlock> <p class="darkText">Нет команды</p> </ng-template>
+        <br>
+        <a class="orderbtn" [routerLink]="['/participant', participant.id]">Подробнее&nbsp;<i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</div>

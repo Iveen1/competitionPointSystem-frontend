@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6" *ngIf="participant">
+      <h1 class="mt-3">{{participant.firstName}} {{participant.lastName}}</h1>
+      <h4></h4>
+      <p *ngIf="participant.team; else elseBlock">{{participant.team.name}}</p>
+      <ng-template #elseBlock> <p class="darkText">Команда отсутствует</p> </ng-template>
+    </div>
+
+    <button type="submit" class="btn btn-md btn-dark mt-3" [routerLink]="['/participant', participant.id, 'edit']">Подробнее</button>
+  </div>
+</div>

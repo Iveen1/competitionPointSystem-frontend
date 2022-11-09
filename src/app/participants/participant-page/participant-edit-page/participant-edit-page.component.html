@@ -1,0 +1,31 @@
+<div class="col-lg-5">
+  <h1>Редактирование участника</h1>
+  <form id="form" name="form" (ngSubmit)="onSubmit()">
+    <input name="firstName" [(ngModel)]="form.firstName" type="text" class="form-control" placeholder="Введите имя" required/>
+    <input name="lastName" [(ngModel)]="form.lastName" type="text" class="form-control" placeholder="Введите фамилию" required/>
+  </form>
+
+  <select *ngIf="!participant.team; else elseBlock" [(ngModel)]="form.team" class="form-select">
+    <option *ngFor="let x of teams" [ngValue]="x" [selected]="participant.team != null && x['id'] == participant.team.id">{{x['name']}}</option>
+    <option [ngValue]="participant.team" selected class="darkText">Нет команды</option>
+  </select>
+
+  <ng-template #elseBlock>
+    <select [(ngModel)]="form.team" class="form-select">
+      <option selected [ngValue]="form.team">{{form.team.name}}</option>
+      <option *ngFor="let x of disjointTeams" [ngValue]="x">{{x['name']}}</option>
+      <option [ngValue]="null" class="darkText">Нет команды</option>
+    </select>
+  </ng-template>
+
+  <button form="form" type="submit" class="btn btn-md btn-dark mt-3">Обновить</button>
+
+  <br>
+  <div *ngIf="isSuccess" class="alert alert-success">
+    Изменения применены.
+  </div>
+  <div *ngIf="!isSuccess && isSubmitted" class="alert alert-danger">
+    Произошла ошибка. Возможно, вы неверно указали какие-то поля.
+  </div>
+
+</div>

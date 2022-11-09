@@ -1,0 +1,38 @@
+#notfound {
+  position: relative;
+  height: 80vh;
+}
+
+.notfound {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 30%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+h1 {
+  font-size: 140px;
+  font-weight: 700;
+  color: #232323;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #232323;
+}
+
+a {
+  color: #fff;
+  background-color: #f99821;
+  border-radius: 50px;
+  text-decoration: none;
+  padding: 1vh 4vh;
+  font-weight: 700;
+}
