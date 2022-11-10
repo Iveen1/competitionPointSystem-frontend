@@ -31,7 +31,7 @@ export class TeamsService {
 
   updateTeam(id: number, data: CreateTeam) {
     // @ts-ignore
-    return this.http.post(`http://localhost:8080/api/teams/modify/${id}`, httpOptions)
+    return this.http.post(`http://localhost:8080/api/teams/modify/${id}`, data, httpOptions)
   }
 
   deleteTeam(id: number) {

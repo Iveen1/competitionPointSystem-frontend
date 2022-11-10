@@ -14,6 +14,9 @@ import { ParticipantPageComponent } from './participants/participant-page/partic
 import {FormsModule} from "@angular/forms";
 import { ParticipantEditPageComponent } from './participants/participant-page/participant-edit-page/participant-edit-page.component';
 import { ParticipantCreateComponent } from './participants/participant-create/participant-create.component';
+import { TeamCreateComponent } from './teams/team-create/team-create.component';
+import { TeamPageComponent } from './teams/team-page/team-page.component';
+import { TeamEditPageComponent } from './teams/team-page/team-edit-page/team-edit-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { ParticipantCreateComponent } from './participants/participant-create/pa
     PagenotfoundComponent,
     ParticipantPageComponent,
     ParticipantEditPageComponent,
-    ParticipantCreateComponent
+    ParticipantCreateComponent,
+    TeamCreateComponent,
+    TeamPageComponent,
+    TeamEditPageComponent
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,7 @@ export class ParticipantsComponent implements OnInit {
   }
 
   getParticipants() {
-    this.participantsService.getParticipants(0).subscribe(item => {
+    this.participantsService.getParticipants(0, 100).subscribe(item => {
       // @ts-ignore
       this.participants = item['body']['content'];
     })

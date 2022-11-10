@@ -12,6 +12,9 @@ import {
 } from "./participants/participant-page/participant-edit-page/participant-edit-page.component";
 import {CreateParticipant} from "./info/CreateParticipant";
 import {ParticipantCreateComponent} from "./participants/participant-create/participant-create.component";
+import {TeamCreateComponent} from "./teams/team-create/team-create.component";
+import {TeamPageComponent} from "./teams/team-page/team-page.component";
+import {TeamEditPageComponent} from "./teams/team-page/team-edit-page/team-edit-page.component";
 
 const routes: Routes = [
   {
@@ -37,6 +40,18 @@ const routes: Routes = [
   {
     path:'teams',
     component: TeamsComponent
+  },
+  {
+    path:'teams/create',
+    component: TeamCreateComponent
+  },
+  // {
+  //   path:'team/:id',
+  //   component: TeamPageComponent
+  // },
+  {
+    path:'team/:id/edit',
+    component: TeamEditPageComponent
   },
   {
     path:'tasks',
