@@ -21,53 +21,84 @@ export class ParticipantEditPageComponent implements OnInit {
   private createParticipant: CreateParticipant;
   constructor(private participantsService: ParticipantsService, private teamsService: TeamsService, private router: Router, private route: ActivatedRoute) { }
 
+  redirectUnknownPage() {
+    this.router.navigate(['404']);
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe(item => {
       if (item['id'] == undefined) {
-        this.router.navigate(['404'])
+        this.redirectUnknownPage();
       } else {
-        this.id = item['id']
+        this.getParticipant(item['id']);
+        this.getTeams();
       }
     })
-    this.getParticipant();
-    this.getTeams();
   }
 
   onSubmit() {
-    console.log(this.form)
-    // this.isSubmitted = true;
-    // const participant = [{
-    //   "productId": this.id,
-    //   "amount": this.form.amount
-    // }];
-    // this.createParticipant = new CreateParticipant(
-    //   this.form.firstName,
-    //   this.form.lastName,
-    // );
-    // this.participantsService.updateParticipant(this.id, this.createParticipant).subscribe(
-    //   data => {
-    //     // @ts-ignore
-    //     if (data.status == 200) {
-    //       this.isSuccess = true;
-    //     };
-    //   }
-    // )
+    this.createParticipant = new CreateParticipant(
+      this.form.firstName,
+      this.form.lastName,
+    );
+    this.participantsService.updateParticipant(this.id, this.createParticipant).subscribe(
+      item => {
+        // @ts-ignore
+        if (item.status == 200) {
+          this.isSuccess = true;
+        };
+      }
+    )
+    if (this.form.team == null && this.participant.team != null) { // если указана команда null в форме и у юзера есть команда
+      this.teamsService.deleteParticipant(this.id, this.participant.team.id).subscribe((item: any) => {
+        if (item.status == 200) {
+          this.participant.team = null;
+        }
+      }, error => { this.isSuccess = false; })
+    } else if (this.form.team == this.participant.team) { // если команда в форме является той, в которой юзер уже находится
+
+    } else if (this.form.team != null && this.participant.team != null) { // если команда в форме не null
+        this.teamsService.deleteParticipant(this.id, this.participant.team.id).subscribe((item: any) => {
+          this.teamsService.addParticipant(this.id, this.form.team.id).subscribe((item: any) => {
+            this.participant.team = this.form.team;
+            this.getTeams();
+          })
+        }, error => { this.isSuccess = false; })
+
+    } else if (this.form.team != null) {
+      this.teamsService.addParticipant(this.id, this.form.team.id).subscribe((item: any) => {
+        this.participant.team = this.form.team;
+      }, error => { this.isSuccess = false; })
+    }
+    this.isSubmitted = true;
   }
 
-  getParticipant() {
-    this.participantsService.getParticipantsById(this.id).subscribe(item => {
+  onDelete() {
+    this.participantsService.deleteParticipant(this.id).subscribe((item: any) => {
+      if (item.status == 200) {
+        this.isSuccess = true;
+        this.isSubmitted = true;
+        this.router.navigate(['participants']);
+      }
+    })
+  }
+
+  getParticipant(id: number) {
+    this.participantsService.getParticipantsById(id).subscribe((item: any) => {
+      this.id = id;
       // @ts-ignore
-      this.participant = item;
+      this.participant = item['body'];
       this.form.team = this.participant.team;
       this.form.firstName = this.participant.firstName;
       this.form.lastName = this.participant.lastName;
+    }, error => {
+      this.redirectUnknownPage();
     });
   }
 
   getTeams() {
-    this.teamsService.getTeams(0, 100).subscribe(item => {
-      // @ts-ignore
-      this.teams = item['content'];
+    this.teamsService.getTeams(0, 100).subscribe((item: any) => {
+      this.teams = item['body']['content'];
       this.disjointTeams = this.teams.filter(item => item['id'] != this.form.team.id);
     });
   }

@@ -1,0 +1,9 @@
+.btn {
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-bottom: 30px;
+}
+
+.form-control, .form-select, h1 {
+  margin-left: 5px;
+}

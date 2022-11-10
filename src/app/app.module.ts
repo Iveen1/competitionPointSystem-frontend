@@ -13,6 +13,12 @@ import {HttpClientModule} from "@angular/common/http";
 import { ParticipantPageComponent } from './participants/participant-page/participant-page.component';
 import {FormsModule} from "@angular/forms";
 import { ParticipantEditPageComponent } from './participants/participant-page/participant-edit-page/participant-edit-page.component';
+import { ParticipantCreateComponent } from './participants/participant-create/participant-create.component';
+import { TeamCreateComponent } from './teams/team-create/team-create.component';
+import { TeamPageComponent } from './teams/team-page/team-page.component';
+import { TeamEditPageComponent } from './teams/team-page/team-edit-page/team-edit-page.component';
+import { TaskCreateComponent } from './tasks/task-create/task-create.component';
+import { TaskEditPageComponent } from './tasks/task-page/task-edit-page/task-edit-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +31,13 @@ import { ParticipantEditPageComponent } from './participants/participant-page/pa
     HeaderComponent,
     PagenotfoundComponent,
     ParticipantPageComponent,
-    ParticipantEditPageComponent
+    ParticipantEditPageComponent,
+    ParticipantCreateComponent,
+    TeamCreateComponent,
+    TeamPageComponent,
+    TeamEditPageComponent,
+    TaskCreateComponent,
+    TaskEditPageComponent
   ],
   imports: [
     BrowserModule,

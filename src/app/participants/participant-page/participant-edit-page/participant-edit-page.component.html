@@ -1,4 +1,5 @@
 <div class="col-lg-5">
+  <button class="btn btn-secondary" [routerLink]="['/participant', participant.id]"><i class="bi bi-arrow-left"></i> Назад</button>
   <h1>Редактирование участника</h1>
   <form id="form" name="form" (ngSubmit)="onSubmit()">
     <input name="firstName" [(ngModel)]="form.firstName" type="text" class="form-control" placeholder="Введите имя" required/>
@@ -6,19 +7,20 @@
   </form>
 
   <select *ngIf="!participant.team; else elseBlock" [(ngModel)]="form.team" class="form-select">
-    <option *ngFor="let x of teams" [ngValue]="x" [selected]="participant.team != null && x['id'] == participant.team.id">{{x['name']}}</option>
     <option [ngValue]="participant.team" selected class="darkText">Нет команды</option>
+    <option *ngFor="let x of teams" [ngValue]="x" [selected]="participant.team != null && x['id'] == participant.team.id">{{x['name']}}</option>
   </select>
 
   <ng-template #elseBlock>
     <select [(ngModel)]="form.team" class="form-select">
+      <option [ngValue]="null" class="darkText">Нет команды</option>
       <option selected [ngValue]="form.team">{{form.team.name}}</option>
       <option *ngFor="let x of disjointTeams" [ngValue]="x">{{x['name']}}</option>
-      <option [ngValue]="null" class="darkText">Нет команды</option>
     </select>
   </ng-template>
 
-  <button form="form" type="submit" class="btn btn-md btn-dark mt-3">Обновить</button>
+  <button form="form" type="submit" class="btn btn-secondary">Обновить</button>
+  <button type="submit" class="btn btn-danger" (click)="onDelete()">Удалить</button>
 
   <br>
   <div *ngIf="isSuccess" class="alert alert-success">

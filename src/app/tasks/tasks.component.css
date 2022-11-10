@@ -1,0 +1,37 @@
+.card {
+  padding: 10px 10px;
+  min-height: 150px;
+  background-color: #ceb4ff;
+  position:relative;
+}
+.card h1 {
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.card h2 {
+  font-size: 15px;
+  margin-top: 20px;
+}
+.buttons {
+  text-align: center;
+}
+
+.btn1 {
+  margin: 2px;
+  right: 0;
+  width: 30%;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn1:hover {
+  background-color: #dcdcdc;
+  border-color: #dcdcdc;
+}
+
+.btn2 {
+  margin: 2px;
+  width: 30%;
+}
+
