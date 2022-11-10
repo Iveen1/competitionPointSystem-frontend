@@ -1,0 +1,14 @@
+.navbar-light .navbar-nav .nav-link.active-link {
+  color: #702aff;
+  font-weight: 700;
+}
+
+.navbar-brand {
+  padding-left: 10px;
+  font-weight: 700;
+}
+
+a:visited, a:link, a:hover, a:active {
+  color: #702aff;
+  text-decoration-color: #702aff;
+}

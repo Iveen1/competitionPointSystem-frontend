@@ -37,7 +37,6 @@ export class ParticipantEditPageComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isSubmitted = true;
     this.createParticipant = new CreateParticipant(
       this.form.firstName,
       this.form.lastName,
@@ -71,6 +70,7 @@ export class ParticipantEditPageComponent implements OnInit {
         this.participant.team = this.form.team;
       }, error => { this.isSuccess = false; })
     }
+    this.isSubmitted = true;
   }
 
   onDelete() {

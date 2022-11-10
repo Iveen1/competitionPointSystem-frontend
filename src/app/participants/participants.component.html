@@ -1,5 +1,7 @@
 <div class="container">
   <div class="row">
+
+    <button class="btn btn-success" [routerLink]="['/participants', 'create']">Добавить</button>
     <div class="col-lg-4" *ngFor="let participant of participants">
       <div class="card mt-3">
         <h1>{{participant.firstName}} {{participant.lastName}}</h1>

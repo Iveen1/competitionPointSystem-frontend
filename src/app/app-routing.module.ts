@@ -10,6 +10,8 @@ import {ParticipantPageComponent} from "./participants/participant-page/particip
 import {
   ParticipantEditPageComponent
 } from "./participants/participant-page/participant-edit-page/participant-edit-page.component";
+import {CreateParticipant} from "./info/CreateParticipant";
+import {ParticipantCreateComponent} from "./participants/participant-create/participant-create.component";
 
 const routes: Routes = [
   {
@@ -19,6 +21,10 @@ const routes: Routes = [
   {
     path:'participants',
     component: ParticipantsComponent
+  },
+  {
+    path:'participants/create',
+    component: ParticipantCreateComponent
   },
   {
     path:'participant/:id',
