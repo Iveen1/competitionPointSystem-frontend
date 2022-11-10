@@ -5,8 +5,7 @@
       <h4></h4>
       <p *ngIf="participant.team; else elseBlock">{{participant.team.name}}</p>
       <ng-template #elseBlock> <p class="darkText">Команда отсутствует</p> </ng-template>
+      <button type="submit" class="btn btn-md btn-dark mt-3" [routerLink]="['/participant', participant.id, 'edit']">Редактировать</button>
     </div>
-
-    <button type="submit" class="btn btn-md btn-dark mt-3" [routerLink]="['/participant', participant.id, 'edit']">Подробнее</button>
   </div>
 </div>

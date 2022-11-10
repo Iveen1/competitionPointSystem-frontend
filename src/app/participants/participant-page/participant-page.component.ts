@@ -15,21 +15,27 @@ export class ParticipantPageComponent implements OnInit {
   private createParticipant: CreateParticipant;
   constructor(private participantsService: ParticipantsService, private router: Router, private route: ActivatedRoute) { }
 
+  redirectUnknownPage() {
+    this.router.navigate(['404']);
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe(item => {
       if (item['id'] == undefined) {
-        this.router.navigate(['404'])
+        this.redirectUnknownPage();
       } else {
-        this.id = item['id']
+        this.getParticipant(item['id']);
       }
     })
-    this.getParticipant();
   }
 
-  getParticipant() {
-    this.participantsService.getParticipantsById(this.id).subscribe(item => {
+  getParticipant(id: number) {
+    this.participantsService.getParticipantsById(id).subscribe(item => {
+      this.id = id;
       // @ts-ignore
-      this.participant = item;
+      this.participant = item['body'];
+    }, error => {
+      this.redirectUnknownPage();
     });
   }
 }

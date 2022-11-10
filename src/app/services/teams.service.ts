@@ -3,7 +3,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {CreateTeam} from "../info/CreateTeam";
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
+  headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}),
+  observe: 'response'
 }
 
 @Injectable({
@@ -40,7 +41,7 @@ export class TeamsService {
 
   addParticipant(participantId: number, teamId: number) {
     // @ts-ignore
-    return this.http.delete(`http://localhost:8080/api/teams/participant/add?participantId=${participantId}&teamId=${teamId}`, httpOptions)
+    return this.http.post(`http://localhost:8080/api/teams/participant/add?participantId=${participantId}&teamId=${teamId}`, httpOptions)
   }
 
   deleteParticipant(participantId: number, teamId: number) {

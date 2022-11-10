@@ -13,6 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { ParticipantPageComponent } from './participants/participant-page/participant-page.component';
 import {FormsModule} from "@angular/forms";
 import { ParticipantEditPageComponent } from './participants/participant-page/participant-edit-page/participant-edit-page.component';
+import { ParticipantCreateComponent } from './participants/participant-create/participant-create.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ParticipantEditPageComponent } from './participants/participant-page/pa
     HeaderComponent,
     PagenotfoundComponent,
     ParticipantPageComponent,
-    ParticipantEditPageComponent
+    ParticipantEditPageComponent,
+    ParticipantCreateComponent
   ],
   imports: [
     BrowserModule,

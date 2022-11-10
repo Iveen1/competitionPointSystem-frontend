@@ -3,7 +3,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {CreateParticipant} from "../info/CreateParticipant";
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
+  headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}),
+  observe: 'response'
 }
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class ParticipantsService {
 
   updateParticipant(id: number, data: CreateParticipant) {
     // @ts-ignore
-    return this.http.post(`http://localhost:8080/api/participants/modify/${id}`, httpOptions)
+    return this.http.post(`http://localhost:8080/api/participants/modify/${id}`, data, httpOptions)
   }
   deleteParticipant(id: number) {
     // @ts-ignore
