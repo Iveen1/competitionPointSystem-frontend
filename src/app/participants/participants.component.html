@@ -5,8 +5,8 @@
     <div class="col-lg-4" *ngFor="let participant of participants">
       <div class="card mt-3">
         <h1>{{participant.firstName}} {{participant.lastName}}</h1>
-        <p *ngIf="participant.team; else elseBlock">{{participant.team.name}}</p>
-        <ng-template #elseBlock> <p class="darkText">Нет команды</p> </ng-template>
+        <h2 *ngIf="participant.team; else elseBlock">Команда - {{participant.team.name}}</h2>
+        <ng-template #elseBlock> <h2 class="darkText">Нет команды</h2> </ng-template>
         <br>
         <div class="buttons">
           <button class="btn1 btn btn-info" [routerLink]="['/participant', participant.id]">Подробнее&nbsp;<i class="bi bi-arrow-right"></i></button>

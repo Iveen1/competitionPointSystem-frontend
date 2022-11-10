@@ -1,0 +1,17 @@
+<div class="col-lg-5">
+  <button class="btn btn-secondary" [routerLink]="['/teams']"><i class="bi bi-arrow-left"></i> Назад</button>
+  <h1>Создание команды</h1>
+  <form id="form" name="form" (ngSubmit)="onSubmit()">
+    <input name="name" [(ngModel)]="form.name" type="text" class="form-control" placeholder="Введите название" required/>
+  </form>
+
+  <button form="form" type="submit" class="btn btn-success">Создать</button>
+  <br>
+  <div *ngIf="isSuccess" class="alert alert-success">
+    Изменения применены.
+  </div>
+  <div *ngIf="!isSuccess && isSubmitted" class="alert alert-danger">
+    Произошла ошибка. Возможно, вы неверно указали какие-то поля.
+  </div>
+
+</div>

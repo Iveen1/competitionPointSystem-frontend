@@ -1,0 +1,18 @@
+<div class="col-lg-5">
+  <button class="btn btn-secondary" [routerLink]="['/teams']"><i class="bi bi-arrow-left"></i> Назад</button>
+  <h1>Редактирование задачи</h1>
+  <form id="form" name="form" (ngSubmit)="onSubmit()">
+    <input name="name" [(ngModel)]="form.title" type="text" class="form-control" placeholder="Введите название" required/>
+    <input name="maxPoints" [(ngModel)]="form.maxPoints" type="number" class="form-control" placeholder="Введите максимальный балл" required/>
+  </form>
+
+  <button form="form" type="submit" class="btn btn-success">Изменить</button>
+  <br>
+  <div *ngIf="isSuccess" class="alert alert-success">
+    Изменения применены.
+  </div>
+  <div *ngIf="!isSuccess && isSubmitted" class="alert alert-danger">
+    Произошла ошибка. Возможно, вы неверно указали какие-то поля.
+  </div>
+
+</div>

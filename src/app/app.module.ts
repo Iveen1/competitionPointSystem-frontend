@@ -17,6 +17,8 @@ import { ParticipantCreateComponent } from './participants/participant-create/pa
 import { TeamCreateComponent } from './teams/team-create/team-create.component';
 import { TeamPageComponent } from './teams/team-page/team-page.component';
 import { TeamEditPageComponent } from './teams/team-page/team-edit-page/team-edit-page.component';
+import { TaskCreateComponent } from './tasks/task-create/task-create.component';
+import { TaskEditPageComponent } from './tasks/task-page/task-edit-page/task-edit-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { TeamEditPageComponent } from './teams/team-page/team-edit-page/team-edi
     ParticipantCreateComponent,
     TeamCreateComponent,
     TeamPageComponent,
-    TeamEditPageComponent
+    TeamEditPageComponent,
+    TaskCreateComponent,
+    TaskEditPageComponent
   ],
   imports: [
     BrowserModule,

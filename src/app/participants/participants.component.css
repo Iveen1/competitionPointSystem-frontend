@@ -9,6 +9,10 @@
   margin-top: 20px;
   font-weight: bold;
 }
+.card h2 {
+  font-size: 15px;
+  margin-top: 20px;
+}
 .buttons {
   text-align: center;
 }
