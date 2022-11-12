@@ -8,5 +8,20 @@
       <ng-template #elseBlock> <p class="darkText">Команда отсутствует</p> </ng-template>
       <button type="submit" class="btn btn-md btn-dark mt-3" [routerLink]="['/participant', participant.id, 'edit']">Редактировать</button>
     </div>
+
+    <div *ngIf="isLoaded" class="row points">
+      <hr>
+      <h1>Задачи и баллы</h1>
+    </div>
+
+    <table border="1" cellspacing="1" cellpadding="1">
+      <tr>
+        <th *ngFor="let task of tasks"> {{task.title.substring(0,10)}} id={{task.id}} </th>
+      </tr>
+
+      <ng-template ngFor let-item [ngForOf]="tasks" let-i="index">
+        <td> {{table.get(item['id']).coefficient}} A</td>
+      </ng-template>
+    </table>
   </div>
 </div>

@@ -3,3 +3,16 @@
   margin-left: 5px;
   margin-bottom: 10px;
 }
+
+.points {
+  margin-top: 50px;
+}
+
+.points h1 {
+  text-align: center;
+  font-size: 26px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
