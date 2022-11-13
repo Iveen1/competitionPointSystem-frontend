@@ -30,4 +30,12 @@ export class ParticipantsComponent implements OnInit {
       this.participants = item['body']['content'];
     })
   }
+
+  countPoints(data: any) {
+    let points = 0;
+    for (let point of data['points']) {
+      points += point['coefficient'] * point['task']['maxPoints'];
+    }
+    return points;
+  }
 }

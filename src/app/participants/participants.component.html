@@ -7,6 +7,7 @@
         <h1>{{participant.firstName}} {{participant.lastName}}</h1>
         <h2 *ngIf="participant.team; else elseBlock">Команда - {{participant.team.name}}</h2>
         <ng-template #elseBlock> <h2 class="darkText">Нет команды</h2> </ng-template>
+        <p>Баллы - {{countPoints(participant)}}</p>
         <br>
         <div class="buttons">
           <button class="btn1 btn btn-info" [routerLink]="['/participant', participant.id]">Подробнее&nbsp;<i class="bi bi-arrow-right"></i></button>
