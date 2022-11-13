@@ -3,17 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import {MainComponent} from "./main/main.component";
 import {ParticipantsComponent} from "./participants/participants.component";
 import {TeamsComponent} from "./teams/teams.component";
-import {PointsComponent} from "./points/points.component";
 import {TasksComponent} from "./tasks/tasks.component";
 import {PagenotfoundComponent} from "./pagenotfound/pagenotfound.component";
 import {ParticipantPageComponent} from "./participants/participant-page/participant-page.component";
-import {
-  ParticipantEditPageComponent
-} from "./participants/participant-page/participant-edit-page/participant-edit-page.component";
-import {CreateParticipant} from "./info/CreateParticipant";
+import {ParticipantEditPageComponent} from "./participants/participant-page/participant-edit-page/participant-edit-page.component";
 import {ParticipantCreateComponent} from "./participants/participant-create/participant-create.component";
 import {TeamCreateComponent} from "./teams/team-create/team-create.component";
-import {TeamPageComponent} from "./teams/team-page/team-page.component";
 import {TeamEditPageComponent} from "./teams/team-page/team-edit-page/team-edit-page.component";
 import {TaskEditPageComponent} from "./tasks/task-page/task-edit-page/task-edit-page.component";
 import {TaskCreateComponent} from "./tasks/task-create/task-create.component";
@@ -66,10 +61,6 @@ const routes: Routes = [
   {
     path:'task/:id/edit',
     component: TaskEditPageComponent
-  },
-  {
-    path:'points',
-    component: PointsComponent
   },
   {
     path: '**',

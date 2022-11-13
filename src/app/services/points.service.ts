@@ -15,7 +15,7 @@ export class PointsService {
 
   createPoint(taskId: number, participantId: number, coefficient: number) {
     // @ts-ignore
-    return this.http.post(`http://localhost:8080/api/points/create?taskId=${taskId}&participantId=${participantId}&coefficient=${coefficient}`, data, httpOptions)
+    return this.http.post(`http://localhost:8080/api/points/create?taskId=${taskId}&participantId=${participantId}&coefficient=${coefficient}`, httpOptions)
   }
 
   getPoint(page: number, size: number = 30) {
@@ -35,7 +35,7 @@ export class PointsService {
 
   updatePoint(pointId: number, taskId: number, participantId: number, coefficient: number) {
     // @ts-ignore
-    return this.http.post(`http://localhost:8080/api/points/modify/${pointId}?taskId=${taskId}&participantId=${participantId}&coefficient=${coefficient}`, data, httpOptions)
+    return this.http.post(`http://localhost:8080/api/points/modify/${pointId}?taskId=${taskId}&participantId=${participantId}&coefficient=${coefficient}`, httpOptions)
   }
 
   deletePoint(id: number) {

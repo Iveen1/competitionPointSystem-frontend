@@ -3,6 +3,8 @@ import {ParticipantsService} from "../../services/participants.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PointsService} from "../../services/points.service";
 import {TasksService} from "../../services/tasks.service";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogComponent} from "../../dialog/dialog.component";
 
 @Component({
   selector: 'app-participant-page',
@@ -16,7 +18,11 @@ export class ParticipantPageComponent implements OnInit {
   points: any;
   table: Map<number, any> = new Map();
   isLoaded = false;
-  constructor(private participantsService: ParticipantsService, private pointsService: PointsService, private tasksService: TasksService, private router: Router, private route: ActivatedRoute) { }
+  totalPoints: number = 0;
+
+
+  constructor(private participantsService: ParticipantsService, private pointsService: PointsService, private tasksService: TasksService, private router: Router, private route: ActivatedRoute,
+              public dialog: MatDialog) { }
 
   redirectUnknownPage() {
     this.router.navigate(['404']);
@@ -60,14 +66,33 @@ export class ParticipantPageComponent implements OnInit {
   }
 
   generateTable() {
+    this.totalPoints = 0;
     for (let task of this.tasks) {
       let taskPoint = this.points[task['id']];
       if (taskPoint == undefined) {
-        taskPoint = 0;
+        this.points[task['id']] = {"id": -1, "coefficient": 0, task: task};
+        taskPoint = this.points[task['id']];
       }
-
-      this.table.set(task.id, taskPoint)
+      this.table.set(task.id, taskPoint);
+      this.totalPoints += taskPoint['coefficient'] * taskPoint['task']['maxPoints'];
     }
-    console.log(this.table)
+  }
+
+  //
+  openDialog(point: any, participant: any): void {
+    console.log('before')
+    console.log(this.points);
+    console.log(this.table);
+    let dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px',
+      data: {point: point, participant: participant}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.generateTable();
+      console.log('after')
+      console.log(this.points);
+      console.log(this.table);
+    });
   }
 }

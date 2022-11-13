@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Изменение оценки</h1>
+<div mat-dialog-content>
+  <p>{{data.point.task.title}}</p>
+  <mat-form-field>
+    <input type="number" matInput [(ngModel)]="point" [min]="0" [max]="data.point.task.maxPoints">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <p class="error" *ngIf="error">Введите правильную максимальную оценку.</p>
+  <button class="btn btn-danger" (click)="closeDialog()"> Отмена </button>
+  <button class="btn btn-success" (click)="onSubmit()"> Применить </button>
+</div>
