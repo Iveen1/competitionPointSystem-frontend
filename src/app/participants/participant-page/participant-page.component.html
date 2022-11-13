@@ -8,5 +8,27 @@
       <ng-template #elseBlock> <p class="darkText">Команда отсутствует</p> </ng-template>
       <button type="submit" class="btn btn-md btn-dark mt-3" [routerLink]="['/participant', participant.id, 'edit']">Редактировать</button>
     </div>
+
+    <div *ngIf="isLoaded" class="row points">
+      <hr>
+      <h1>Задачи и баллы</h1>
+    </div>
+
+    <table border="1" cellspacing="1" cellpadding="1">
+      <tr>
+        <th [routerLink]="['/task', task.id, 'edit']" title="Перейти к задаче" *ngFor="let task of tasks">
+          <a [routerLink]="['/task', task.id, 'edit']">
+            <p *ngIf="task.title.length > 30; else elseBlock"> {{task.title.substring(0,30)}} ...</p>
+            <ng-template #elseBlock> <p> {{task.title}} </p> </ng-template>
+          </a>
+          <p class="maxPoints">Макс. {{task.maxPoints}} баллов</p>
+        </th>
+      </tr>
+
+      <ng-template ngFor let-item [ngForOf]="tasks" let-i="index">
+        <td (click)="openDialog(table.get(item['id']), participant)" title="Перейти к выставлению оценки"> {{table.get(item['id']).coefficient * table.get(item['id']).task.maxPoints}}</td>
+      </ng-template>
+    </table>
+    <h2>Итого баллов: {{totalPoints}}</h2>
   </div>
 </div>

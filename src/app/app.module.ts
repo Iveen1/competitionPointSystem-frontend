@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { TeamsComponent } from './teams/teams.component';
 import { ParticipantsComponent } from './participants/participants.component';
 import { TasksComponent } from './tasks/tasks.component';
-import { PointsComponent } from './points/points.component';
 import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
@@ -19,6 +18,11 @@ import { TeamPageComponent } from './teams/team-page/team-page.component';
 import { TeamEditPageComponent } from './teams/team-page/team-edit-page/team-edit-page.component';
 import { TaskCreateComponent } from './tasks/task-create/task-create.component';
 import { TaskEditPageComponent } from './tasks/task-page/task-edit-page/task-edit-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogComponent } from './dialog/dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -26,7 +30,6 @@ import { TaskEditPageComponent } from './tasks/task-page/task-edit-page/task-edi
     TeamsComponent,
     ParticipantsComponent,
     TasksComponent,
-    PointsComponent,
     MainComponent,
     HeaderComponent,
     PagenotfoundComponent,
@@ -37,13 +40,18 @@ import { TaskEditPageComponent } from './tasks/task-page/task-edit-page/task-edi
     TeamPageComponent,
     TeamEditPageComponent,
     TaskCreateComponent,
-    TaskEditPageComponent
+    TaskEditPageComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
