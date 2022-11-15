@@ -1,1 +1,30 @@
-<p>main works!</p>
+
+<div class="row block">
+  <hr>
+  <h1>Пользователи</h1>
+</div>
+
+<div class="row">
+  <ngx-charts-bar-vertical
+    [view]="[1000,400]"
+    [results]="data"
+    [xAxisLabel]="'Участники'"
+    [legendTitle]="'Участники'"
+    [yAxisLabel]="'Баллы'"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [gradient]="true">
+  </ngx-charts-bar-vertical>
+</div>
+
+<button class="btn2 btn btn-danger" (click)="prevPage()">Пред. топ-5</button>
+<button class="btn2 btn btn-success" (click)="nextPage()">След. топ-5</button>
+
+<div class="row block">
+  <hr>
+  <h1>Команды</h1>
+</div>
+

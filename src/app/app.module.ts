@@ -23,6 +23,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {MatInputModule} from "@angular/material/input";
     BrowserAnimationsModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
