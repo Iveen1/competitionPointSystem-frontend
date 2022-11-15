@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ParticipantsService} from "../services/participants.service";
+import {TeamsService} from "../services/teams.service";
 
 @Component({
   selector: 'app-main',
@@ -8,26 +9,45 @@ import {ParticipantsService} from "../services/participants.service";
 })
 export class MainComponent implements OnInit {
 
-  constructor(private participantsService: ParticipantsService) { }
-  page = 0;
-  pagesInfo: number = -1;
-  data: any = [];
+  constructor(private participantsService: ParticipantsService, private teamsService: TeamsService) { }
+  pages: any = {participant: 0, team: 0};
+  pagesInfo: any = {participant: -1, team: -1};
+  participantData: any = [];
+  teamData: any = [];
 
   ngOnInit(): void {
-    this.getParticipants()
+    this.getParticipants();
+    this.getTeams();
   }
 
   getParticipants() {
-    this.data = [];
-    this.participantsService.getParticipants(this.page, 5).subscribe((items: any) => {
+    this.participantData = [];
+    this.participantsService.getParticipants(this.pages['participant'], 5).subscribe((items: any) => {
       console.log(items)
-      this.pagesInfo = items.body.totalPages;
+      this.pagesInfo['participant'] = items.body.totalPages-1;
       for (let item of items.body.content) {
-        // @ts-ignore
-        this.data.push({name: `${item["firstName"]} ${item["lastName"]}`, value: this.countPoints(item)});
+        this.participantData.push({name: `${item["firstName"]} ${item["lastName"]}`, value: this.countPoints(item)});
       }
-      console.log(this.data)
-      this.data = [...this.data];
+      this.participantData = [...this.participantData];
+      console.log(this.participantData)
+    })
+  }
+
+  getTeams() {
+    this.teamData = [];
+    this.teamsService.getTeams(this.pages['team'], 5).subscribe((items: any) => {
+      this.pagesInfo['team'] = items.body.totalPages-1;
+      for (let item of items.body.content) {
+        let points = 0;
+        for (let participant of item.participants) {
+          points += this.countPoints(participant);
+        }
+        if (points != 0) {
+          points = points / item.participants.length;
+        }
+        this.teamData.push({name: item.name, value: points});
+      }
+      this.teamData = [...this.teamData];
     })
   }
 
@@ -39,17 +59,19 @@ export class MainComponent implements OnInit {
     return points;
   }
 
-  nextPage() {
-    if (this.page < this.pagesInfo) {
-      this.page += 1;
+  nextPage(pageObj: any,) {
+    if (this.pages[pageObj] < this.pagesInfo[pageObj]) {
+      this.pages[pageObj] += 1;
       this.getParticipants();
+      this.getTeams();
     }
   }
 
-  prevPage() {
-    if (this.page >= 1){
-      this.page -= 1;
+  prevPage(pageObj: any) {
+    if (this.pages[pageObj] >= 1){
+      this.pages[pageObj] -= 1;
       this.getParticipants();
+      this.getTeams();
     }
   }
 }

@@ -7,7 +7,7 @@
 <div class="row">
   <ngx-charts-bar-vertical
     [view]="[1000,400]"
-    [results]="data"
+    [results]="participantData"
     [xAxisLabel]="'Участники'"
     [legendTitle]="'Участники'"
     [yAxisLabel]="'Баллы'"
@@ -20,11 +20,29 @@
   </ngx-charts-bar-vertical>
 </div>
 
-<button class="btn2 btn btn-danger" (click)="prevPage()">Пред. топ-5</button>
-<button class="btn2 btn btn-success" (click)="nextPage()">След. топ-5</button>
+<button class="btn2 btn btn-danger" (click)="prevPage('participant')">Пред. топ-5</button>
+<button class="btn2 btn btn-success" (click)="nextPage('participant')">След. топ-5</button>
 
 <div class="row block">
   <hr>
   <h1>Команды</h1>
 </div>
 
+<div class="row">
+  <ngx-charts-bar-vertical
+    [view]="[1000,400]"
+    [results]="teamData"
+    [xAxisLabel]="'Команды'"
+    [legendTitle]="'Команды'"
+    [yAxisLabel]="'Средние баллы'"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [gradient]="true">
+  </ngx-charts-bar-vertical>
+</div>
+
+<button class="btn2 btn btn-danger" (click)="prevPage('team')">Пред. топ-5</button>
+<button class="btn2 btn btn-success" (click)="nextPage('team')">След. топ-5</button>
