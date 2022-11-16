@@ -38,7 +38,7 @@ export class TeamCreateComponent implements OnInit {
       this.isSuccess = true;
       this.router.navigate(['/teams']);
     }, error => {
-      this.redirectUnknownPage();
+
     });
   }
 }

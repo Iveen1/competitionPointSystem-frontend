@@ -41,7 +41,7 @@ export class ParticipantCreateComponent implements OnInit {
       this.router.navigate(['/participant', item['body']['id']]);
       this.isSuccess = true;
     }, error => {
-      this.redirectUnknownPage();
+
     });
   }
 

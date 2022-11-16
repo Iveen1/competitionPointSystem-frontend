@@ -46,7 +46,7 @@ export class TaskEditPageComponent implements OnInit {
       this.isSuccess = true;
       this.router.navigate(['/tasks']);
     }, error => {
-      this.redirectUnknownPage();
+
     });
   }
 

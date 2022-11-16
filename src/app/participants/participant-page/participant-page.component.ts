@@ -80,9 +80,6 @@ export class ParticipantPageComponent implements OnInit {
 
   //
   openDialog(point: any, participant: any): void {
-    console.log('before')
-    console.log(this.points);
-    console.log(this.table);
     let dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
       data: {point: point, participant: participant}
@@ -90,9 +87,6 @@ export class ParticipantPageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.generateTable();
-      console.log('after')
-      console.log(this.points);
-      console.log(this.table);
     });
   }
 }
